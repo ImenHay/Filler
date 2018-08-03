@@ -1,0 +1,107 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   filler.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: imhaimou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/31 20:50:35 by imhaimou          #+#    #+#             */
+/*   Updated: 2018/07/31 20:59:10 by imhaimou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FILLER_H
+
+# define FILLER_H
+
+# include "../libft/includes/libft.h"
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+
+# define DEFAULT_MAP_VAL	'-'
+# define DEFAULT_ENM_VAL	0
+
+# define VOID_VAL	0
+# define ENEMY_VAL	1
+# define MY_VAL		-1
+# define NEAR		2
+
+# define ERROR      -1
+# define FT_STDIN	0
+# define FT_STDOUT	1
+# define FT_STDERR	2
+
+# define PIECE_X 	0
+# define PIECE_Y 	1
+
+typedef struct	s_game
+{
+	int			my_y_start;
+	int			enmy_y_start;
+	int			north;
+	int			valid_x;
+	int			valid_y;
+	int			start_piece;
+	int			player;
+	int			*piece[2];
+	int			piece_len;
+	int			piece_x;
+	int			piece_y;
+	int			**map;
+	int			map_x;
+	int			map_y;
+	int			first_px;
+	int			first_py;
+	char		is_mine;
+}				t_game;
+
+int				check_all(int **tab, int y, int x, t_game *g);
+
+int				check_one_block(int **tab, int y, int x, t_game *g);
+
+void			clear_map(t_game *game);
+
+int				count_enemy(int **tab, t_game *g);
+
+int				count_stars(char **tab, t_game *game, int i);
+
+int				conv(char c, int y, t_game *g);
+
+int				distance_to_enemy(int x, int y, int enemy_x, int enemy_y);
+
+int				ft_aatoi(char *str);
+
+int				ft_abs(int n);
+
+int				get_map_size(char **line, t_game *game);
+
+int				get_next_line(const int fd, char **line);
+
+int				get_player(char **tab, t_game *game);
+
+int				get_player_map(char **tab, t_game *game);
+
+void			init_struct(t_game *game);
+
+int				init_game(char **tab, t_game *game);
+
+int				is_enemy(char c, t_game *g);
+
+int				map_extract_conv(char **tab, t_game *g, int x, int y);
+
+void			near_enemy(int **tab);
+
+void			opti_place(int **tab, t_game *g);
+
+int				piece_xy(char **tab, t_game *game);
+
+void			piece_coord(char **tab, t_game *game, int i, int stars);
+
+int				piece(char **tab, t_game *game);
+
+char			**read_vm();
+
+void			relative_position(t_game *g, int tmp, int x, int y);
+
+#endif
