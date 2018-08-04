@@ -75,9 +75,11 @@ int				main()
 		if (game.player == -1)
 			get_player_map(&tab, &game);
 		map_begin(&tab);
-		copy(&game, game.map_x, game.map_y);
-		// map_extract_conv(&tab, &game, game.map_x, game.map_y);
-		// printf("player = %d, x= %d, y= %d\n", game.player, game.map_x, game.map_y);
+		copy_map(&game, game.map_x, game.map_y);
+		piece_xy(&game);
+		copy_piece(&game, game.piece_x, game.piece_y);
+		map_extract_conv(game.map, &game, game.map_x, game.map_y);
+		printf("player = %d, x= %d, y= %d, px= %d, py= %d\n", game.player, game.map_x, game.map_y, game.piece_x, game.piece_y);
 		// if (!piece(tab, &game))
 		// 	return (0);
 		// map_extract_conv(tab, &game, game.map_x, game.map_y);
@@ -92,14 +94,14 @@ int				main()
 		// printf("is_enemy = %d\n", is_enemy(game.map[1][2], &game));
 		while(i < game.map_y)
 		{
-		// 	j = 0;
-			printf("%s\n", game.map[i]);
-			// while (j < 4)
-			// {
-			// 	printf("%d ", game.map[i][j]);
-			// 	j++;
-			// }
-			// printf("\n");
+			j = 0;
+			// printf("map= %s\n", game.map[i]);
+			while (j < game.map_x)
+			{
+				printf("%2d ", game.map[i][j]);
+				j++;
+			}
+			printf("\n");
 			i++;
 		}
 	}

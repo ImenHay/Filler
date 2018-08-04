@@ -43,7 +43,7 @@ int		map_begin(char **tab)
 	return (1);
 }
 
-int		copy(t_game *g, int x, int y)
+int		copy_map(t_game *g, int x, int y)
 {
 	char *tab;
 	int i;
@@ -66,46 +66,59 @@ int		copy(t_game *g, int x, int y)
 		}
 		g->map[i][j] = '\0';
 		// printf("tab= %s, y = %d\n", g->map[i], y);
-		free(tab);
 		if (!tab)
 			return (0);
+		free(tab);
 		i++;
 	}
 	g->map[i] = NULL;
 }
 
-// int		map_extract_conv(char **tab, t_game *g, int x, int y)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	k;
-// 	int	l;
+int		copy_piece(t_game *g, int x, int y)
+{
+	char *tab;
+	int i;
+	int j;
 
-// 	i = 0;
-// 	k = 0;
-// tab = NULL;
-// 	if (!(g->map = (char**)malloc(sizeof(char*) * (y + 1))))
-// 		return (0);
-	// y += i;
-	// while (i < y)
-	// {
-// 		get_next_line(0, tab);
-// 		if (!(g->map[i] = (char*)malloc(sizeof(char) * (x + 1))))
-// 			return (0);
-// 		j = 3;
-// 		l = 0;
-// 		while (j < (x + 4))
-// 		{
-// 			g->map[i][l] = 'a';
-// 			j++;
-// 			l++;
-// 		}
-// 		g->map[i][l] = '\0';
-// 		i++;
-// 		ft_memdel((void**)tab);
-// 		if (!*tab)
-// 			return (0);
-// 	}
-// 	g->map[i] = NULL;
-// 	return (1);
-// }
+	i = 0;
+	if (!(g->map_p = (char **)malloc(sizeof(char*) * (y + 1))))
+		return (0);
+	while (i < y)
+	{
+		tab = NULL;
+		j = 0;
+		if (get_next_line(0, &tab) == -1)
+			return (0);
+		if (!(g->map_p[i] = (char*)malloc(sizeof(char) * (x + 1))))
+			return (0);
+		while (j < x)
+		{
+			g->map_p[i] = tab;
+			j++;
+		}
+		g->map_p[i][j] = '\0';
+		// printf("tab= %s, y = %d\n", g->map[i], y);
+		if (!tab)
+			return (0);
+		i++;
+	}
+	g->map_p[i] = NULL;
+	// printf("here================\n");
+	return (1);
+}
+
+void	map_extract_conv(char **tab, t_game *g, int x, int y)
+{
+	int xx;
+	int yy;
+
+	xx = 0;
+	yy = 0;
+	while (yy < y)
+	{
+		xx = -1;
+		while (++xx < x)
+			tab[yy][xx] = conv(tab[yy][xx], yy, g);
+		yy++;
+	}
+}

@@ -15,22 +15,12 @@ Plateau 15 17:
 011 .....X.....OOOOO.
 012 ...........O.....
 013 ...........O.....
-014 ...........O.....
+014 ...........O....O
 Piece 2 2:
 *.
 *.
 
-$$$ exec p2 : [players/abanlin.filler]
-Plateau 5 9:
-    012345678
-000 .........
-001 ..O......
-002 .........
-003 .......x.
-004 .........
-Piece 2 3:
-**.
-**.
+
 
 
 
@@ -39,7 +29,7 @@ Plateau 3 5:
     012345
 000 ......
 001 ..O...
-002 ....x.
+002 ....xx
 Piece 2 3:
 ..*
 .**
@@ -89,3 +79,34 @@ Plateau 15 17:
 Piece 2 3:
 .**
 .*.
+
+int		copy_map(t_game *g, int x, int y)
+{
+	char *tab;
+	int i;
+	int j;
+
+	i = 0;
+	if (!(g->map = (char **)malloc(sizeof(char*) * (y + 1))))
+		return (0);
+	while (i < y)
+	{
+		tab = NULL;
+		j = 0;
+		get_next_line(0, &tab);
+		if (!(g->map[i] = (char*)malloc(sizeof(char) * (x + 1))))
+			return (0);
+		while (j < x)
+		{
+			g->map[i][j] = tab[j + 4];
+			j++;
+		}
+		g->map[i][j] = '\0';
+		// printf("tab= %s, y = %d\n", g->map[i], y);
+		free(tab);
+		if (!tab)
+			return (0);
+		i++;
+	}
+	g->map[i] = NULL;
+}

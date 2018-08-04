@@ -27,6 +27,7 @@ void	init_struct(t_game *game)
 	game->piece_x = 0;
 	game->piece_y = 0;
 	game->map = NULL;
+	game->map_p = NULL;
 	game->map_x = -1;
 	game->map_y = -1;
 	game->first_px = -1;
