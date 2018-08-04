@@ -38,57 +38,6 @@ int		map_begin(char **tab)
 	return (1);
 }
 
-int		copy_map(t_game *g, int x, int y)
-{
-	char *tab;
-	int i;
-	int j;
-
-	i = 0;
-	if (!(g->map = (char **)malloc(sizeof(char*) * (y + 1))))
-		return (0);
-	while (i < y)
-	{
-		tab = NULL;
-		j = 0;
-		get_next_line(0, &tab);
-		if (!(g->map[i] = (char*)malloc(sizeof(char) * (x + 1))))
-			return (0);
-		while (j < x)
-		{
-			g->map[i][j] = tab[j + 4];
-			j++;
-		}
-		g->map[i][j] = '\0';
-		if (!tab)
-			return (0);
-		free(tab);
-		i++;
-	}
-	g->map[i] = NULL;
-}
-
-int		copy_piece(t_game *g, int x, int y)
-{
-	char *tab;
-	int i;
-	int j;
-
-	i = 0;
-	if (!(g->map_p = (char **)malloc(sizeof(char*) * (y + 1))))
-		return (0);
-	while (i < y)
-	{
-		tab = NULL;
-		if (get_next_line(0, &tab) == -1)
-			return (0);
-		g->map_p[i] = tab;
-		i++;
-	}
-	g->map_p[i] = NULL;
-	return (1);
-}
-
 void	map_extract_conv(char **tab, t_game *g, int x, int y)
 {
 	int xx;

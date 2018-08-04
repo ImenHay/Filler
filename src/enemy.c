@@ -6,7 +6,7 @@
 /*   By: imhaimou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/31 20:36:01 by imhaimou          #+#    #+#             */
-/*   Updated: 2018/07/31 20:36:32 by imhaimou         ###   ########.fr       */
+/*   Updated: 2018/08/04 23:19:36 by imhaimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		count_enemy(char **tab, t_game *g)
 int		is_enemy(char c, t_game *g)
 {
 	if (g->player == 1)
-		return((c == 'x' || c == 'X') ? 1 : 0);
+		return ((c == 'x' || c == 'X') ? 1 : 0);
 	else if (g->player == 2)
 		return ((c == 'o' || c == 'O') ? 1 : 0);
 	return (1);

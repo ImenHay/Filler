@@ -1,6 +1,6 @@
 CC = gcc
-FLAGS = -g
-#FLAGS = -g -O1	-fsanitize=address	\
+#FLAGS = -g
+FLAGS = -g -O1	-fsanitize=address	\
 				-fno-omit-frame-pointer		\
 				-fsanitize-address-use-after-scope \
 
@@ -25,7 +25,8 @@ SRC_NAME =	main.c      \
 			piece.c		\
 			place.c		\
 			init.c		\
-			enemy.c     
+			enemy.c     \
+			copy.c
 
 
 LIB_NAME = libft.a
@@ -39,8 +40,8 @@ INC = $(addprefix $(INC_PATH)/, $(INC_NAME))
 
 all:
 	@make -C $(LIB_PATH)
-	@$(CC) $(FLAGS)  -I./include $(SRC) $(LIB) -o $(NAME)
-	#	@$(CC) -g -I./include $(SRC) $(LIB) -o $(NAME)
+	#@$(CC) $(FLAGS)  -I./include $(SRC) $(LIB) -o $(NAME)
+		@$(CC) -g -I./include $(SRC) $(LIB) -o $(NAME)
 	@echo "\033[1;34m$(NAME_PROJECT)\t\033[1;33mCompilation\t\033[0;32m[OK]\033[0m"
 
 clean:

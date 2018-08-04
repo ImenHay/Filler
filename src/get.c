@@ -6,7 +6,7 @@
 /*   By: imhaimou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 03:37:44 by imhaimou          #+#    #+#             */
-/*   Updated: 2018/07/25 03:41:44 by imhaimou         ###   ########.fr       */
+/*   Updated: 2018/08/04 23:20:11 by imhaimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			get_player(char **tab, t_game *game)
 	if (ft_strstr(*tab, "exec p"))
 	{
 		game->player = ft_aatoi(*tab);
-		return(1);
+		return (1);
 	}
 	return (0);
 }
@@ -47,7 +47,6 @@ int			get_map_size(char **tab, t_game *game)
 
 int			get_player_map(char **tab, t_game *game)
 {
-	// init_struct(game);
 	if (!(get_player(tab, game)))
 		return (ERROR);
 	if (!get_map_size(tab, game))

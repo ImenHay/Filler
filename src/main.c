@@ -6,7 +6,7 @@
 /*   By: imhaimou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 04:12:04 by imhaimou          #+#    #+#             */
-/*   Updated: 2018/07/25 04:13:28 by imhaimou         ###   ########.fr       */
+/*   Updated: 2018/08/04 23:27:50 by imhaimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,31 +46,31 @@ void print_map(t_game *game)
 	}
 }
 
-	void set_pieec(t_game *game, int **piece, int x, int y)
-	{
-		int ii = 0;
-		while (ii < game->piece_x)
-		{
-			if ((y + piece[PIECE_Y][ii] > 0) && (y + piece[PIECE_Y][ii]) < game->map_y \
-			&&  (x + piece[PIECE_X][ii] > 0) &&  (x + piece[PIECE_X][ii]) < game->map_x)
-				game->map[y + piece[PIECE_Y][ii] ][x + piece[PIECE_X][ii]] = -7;
-			ii++;
-		}
-	}
-
-int				main()
+void set_pieec(t_game *game, int **piece, int x, int y)
 {
-	char		*tab;
-	t_game		game;
-	int i = 0;
-	int j;
+	int ii = 0;
+	while (ii < game->piece_x)
+	{
+		if ((y + piece[PIECE_Y][ii] > 0) && (y + piece[PIECE_Y][ii]) < game->map_y \
+		&&  (x + piece[PIECE_X][ii] > 0) &&  (x + piece[PIECE_X][ii]) < game->map_x)
+			game->map[y + piece[PIECE_Y][ii] ][x + piece[PIECE_X][ii]] = -7;
+		ii++;
+	}
+}
+
+
+int			main(void)
+{
+	char	*tab;
+	t_game	game;
 
 	tab = NULL;
 	init_struct(&game);
 	while (get_next_line(0, &tab))
 	{
 		if (game.player == -1)
-			get_player_map(&tab, &game);
+			if (!get_player_map(&tab, &game))
+				return (0);
 		map_begin(&tab);
 		copy_map(&game, game.map_x, game.map_y);
 		piece_xy(&game);
@@ -82,4 +82,3 @@ int				main()
 		dprintf(1, "%d %d\n", game.valid_y, game.valid_x);
 	}
 }
-

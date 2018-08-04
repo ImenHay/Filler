@@ -6,13 +6,13 @@
 /*   By: imhaimou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 04:04:10 by imhaimou          #+#    #+#             */
-/*   Updated: 2018/07/31 20:48:00 by imhaimou         ###   ########.fr       */
+/*   Updated: 2018/08/04 23:22:02 by imhaimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		check_one_block(char **tab, int y, int x, t_game *g)
+int			check_one_block(char **tab, int y, int x, t_game *g)
 {
 	if ((x >= g->map_x) || (y >= g->map_y))
 		return (ERROR);
@@ -25,7 +25,7 @@ int		check_one_block(char **tab, int y, int x, t_game *g)
 	return (1);
 }
 
-int		check_all(char **tab, int y, int x, t_game *g)
+int			check_all(char **tab, int y, int x, t_game *g)
 {
 	int	i;
 	int	tmpx;
@@ -49,7 +49,7 @@ int		check_all(char **tab, int y, int x, t_game *g)
 	return (count == 1 ? 1 : 0);
 }
 
-void	relative_position(t_game *g, int tmp, int x, int y)
+void		relative_position(t_game *g, int tmp, int x, int y)
 {
 	if (g->my_y_start < g->enmy_y_start)
 	{
@@ -62,10 +62,10 @@ void	relative_position(t_game *g, int tmp, int x, int y)
 	}
 }
 
-void	opti_place(char **tab, t_game *g)
+void		opti_place(char **tab, t_game *g)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 	char	tmp;
 
 	y = 0;
