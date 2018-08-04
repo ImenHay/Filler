@@ -94,20 +94,21 @@ int		copy_piece(t_game *g, int x, int y)
 	while (i < y)
 	{
 		tab = NULL;
-		j = 0;
+		// j = 0;
 		if (get_next_line(0, &tab) == -1)
 			return (0);
-		if (!(g->map_p[i] = (char*)malloc(sizeof(char) * (x + 1))))
-			return (0);
-		while (j < x)
-		{
-			g->map_p[i] = tab;
-			j++;
-		}
-		g->map_p[i][j] = '\0';
+		// if (!(g->map_p[i] = (char*)malloc(sizeof(char) * (x + 1))))
+		// 	return (0);
+		// while (j < x)
+		// {
+		// 	g->map_p[i] = tab;
+		// 	j++;
+		// }
+		g->map_p[i] = tab;
+		// g->map_p[i][j] = '\0';
 		// printf("tab= %s, y = %d\n", g->map[i], y);
-		if (!tab)
-			return (0);
+		// if (!tab)
+			// return (0);
 		i++;
 	}
 	g->map_p[i] = NULL;
