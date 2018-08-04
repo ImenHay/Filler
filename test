@@ -1,3 +1,13 @@
+[TODO]
+01[X]: recover piece coordinaton
+02[ ]: Test if the pieces works
+03[ ]: Find and send the best places. 
+
+
+
+
+
+
 $$$ exec p2 : [../../one]
 Plateau 15 17:
 	01234567890123456
@@ -12,10 +22,10 @@ Plateau 15 17:
 008 .................
 009 .................
 010 .................
-011 .....X.....OOOOO.
+011 .....X...........
 012 ...........O.....
 013 ...........O.....
-014 ...........O....O
+014 .................
 Piece 2 2:
 *.
 *.
@@ -25,11 +35,22 @@ Piece 2 2:
 
 
 $$$ exec p2 : [players/abanlin.filler]
-Plateau 3 5:
+Plateau 3 6:
     012345
 000 ......
 001 ..O...
 002 ....xx
+Piece 2 3:
+..*
+.**
+
+
+$$$ exec p2 : [players/abanlin.filler]
+Plateau 3 2:
+    01
+000 O.
+001 ..
+002 .X
 Piece 2 3:
 ..*
 .**

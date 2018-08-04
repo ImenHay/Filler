@@ -41,7 +41,7 @@ int		is_enemy(char c, t_game *g)
 	return (1);
 }
 
-void	near_enemy(int **tab)
+void	near_enemy(char **tab)
 {
 	int x;
 	int y;

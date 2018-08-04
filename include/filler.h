@@ -96,9 +96,9 @@ int				is_enemy(char c, t_game *g);
 
 int				map_begin(char **tab);
 
-void				map_extract_conv(char **tab, t_game *g, int x, int y);
+void			map_extract_conv(char **tab, t_game *g, int x, int y);
 
-void			near_enemy(int **tab);
+void			near_enemy(char **tab);
 
 void			opti_place(int **tab, t_game *g);
 

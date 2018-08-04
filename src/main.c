@@ -80,10 +80,10 @@ int				main()
 		copy_piece(&game, game.piece_x, game.piece_y);
 		map_extract_conv(game.map, &game, game.map_x, game.map_y);
 		printf("player = %d, x= %d, y= %d, px= %d, py= %d\n", game.player, game.map_x, game.map_y, game.piece_x, game.piece_y);
-		// if (!piece(tab, &game))
-		// 	return (0);
+		piece(game.map_p, &game);
+		printf("stars= %d\n", game.piece_len);
 		// map_extract_conv(tab, &game, game.map_x, game.map_y);
-		// near_enemy(game.map);
+		near_enemy(game.map);
 		// opti_place(game.map, &game);
 
 		// print_map(&game);
@@ -92,6 +92,18 @@ int				main()
 		// printf("MY y_start= %d, y_enemy %d\n", game.my_y_start, game.enmy_y_start);
 		// printf("X= %d, Y= %d // fx= %d, fy = %d\n", game.valid_x, game.valid_y, game.first_px, game.first_py);
 		// printf("is_enemy = %d\n", is_enemy(game.map[1][2], &game));
+		// while(i < game.piece_y)
+		// {
+		// 	j = 0;
+		// 	// printf("map= %s\n", game.map[i]);
+		// 	while (j < game.piece_x)
+		// 	{
+		// 		printf("%2d ", game.piece[i][j]);
+		// 		j++;
+		// 	}
+		// 	printf("\n");
+		// 	i++;
+		// }
 		while(i < game.map_y)
 		{
 			j = 0;
