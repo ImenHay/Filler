@@ -33,7 +33,7 @@ int		conv(char c, int y, t_game *g)
 
 int		map_begin(char **tab)
 {
-	while (!ft_strstr(*tab, "000 "))
+	while (!ft_strstr(*tab, "    0"))
 	{
 		ft_memdel((void**)tab);
 		get_next_line(0, tab);
@@ -43,34 +43,69 @@ int		map_begin(char **tab)
 	return (1);
 }
 
-int		map_extract_conv(char **tab, t_game *g, int x, int y)
+int		copy(t_game *g, int x, int y)
 {
-	int	i;
-	int	j;
-	int	k;
-	int	l;
+	char *tab;
+	int i;
+	int j;
 
 	i = 0;
-	k = 0;
-	if (!(g->map = (int**)malloc(sizeof(int*) * (y + 1))))
+	if (!(g->map = (char **)malloc(sizeof(char*) * (y + 1))))
 		return (0);
-	map_begin(tab);
-	y += i;
 	while (i < y)
 	{
-		if (!(g->map[i] = (int*)malloc(sizeof(int) * (x + 1))))
+		tab = NULL;
+		j = 0;
+		get_next_line(0, &tab);
+		if (!(g->map[i] = (char*)malloc(sizeof(char) * (x + 1))))
 			return (0);
-		j = 3;
-		l = 0;
-		while (++j < (x + 4))
-			g->map[i][l++] = tab[0][j];
-		g->map[i][l] = '\0';
+		while (j < x)
+		{
+			g->map[i][j] = tab[j + 4];
+			j++;
+		}
+		g->map[i][j] = '\0';
+		// printf("tab= %s, y = %d\n", g->map[i], y);
+		free(tab);
+		if (!tab)
+			return (0);
 		i++;
-		ft_memdel((void**)tab);
-		get_next_line(0, tab);
-		if (!*tab)
-			return (0);
 	}
-	g->map[k] = NULL;
-	return (1);
+	g->map[i] = NULL;
 }
+
+// int		map_extract_conv(char **tab, t_game *g, int x, int y)
+// {
+// 	int	i;
+// 	int	j;
+// 	int	k;
+// 	int	l;
+
+// 	i = 0;
+// 	k = 0;
+// tab = NULL;
+// 	if (!(g->map = (char**)malloc(sizeof(char*) * (y + 1))))
+// 		return (0);
+	// y += i;
+	// while (i < y)
+	// {
+// 		get_next_line(0, tab);
+// 		if (!(g->map[i] = (char*)malloc(sizeof(char) * (x + 1))))
+// 			return (0);
+// 		j = 3;
+// 		l = 0;
+// 		while (j < (x + 4))
+// 		{
+// 			g->map[i][l] = 'a';
+// 			j++;
+// 			l++;
+// 		}
+// 		g->map[i][l] = '\0';
+// 		i++;
+// 		ft_memdel((void**)tab);
+// 		if (!*tab)
+// 			return (0);
+// 	}
+// 	g->map[i] = NULL;
+// 	return (1);
+// }

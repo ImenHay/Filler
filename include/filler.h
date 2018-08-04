@@ -48,7 +48,7 @@ typedef struct	s_game
 	int			piece_len;
 	int			piece_x;
 	int			piece_y;
-	int			**map;
+	char		**map;
 	int			map_x;
 	int			map_y;
 	int			first_px;
@@ -67,6 +67,8 @@ int				count_enemy(int **tab, t_game *g);
 int				count_stars(char **tab, t_game *game, int i);
 
 int				conv(char c, int y, t_game *g);
+
+int				copy(t_game *g, int x, int y);
 
 int				distance_to_enemy(int x, int y, int enemy_x, int enemy_y);
 
@@ -87,6 +89,8 @@ void			init_struct(t_game *game);
 int				init_game(char **tab, t_game *game);
 
 int				is_enemy(char c, t_game *g);
+
+int				map_begin(char **tab);
 
 int				map_extract_conv(char **tab, t_game *g, int x, int y);
 
