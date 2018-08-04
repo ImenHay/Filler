@@ -53,7 +53,6 @@ void	near_enemy(char **tab, int yy, int xx)
 		x = 0;
 		while (x < xx)
 		{
-		// printf("inside neqr enmey \n"); 	
 			if (tab[y][x] == ENEMY_VAL)
 			{
 				if (tab[y - 1][x] == VOID_VAL)

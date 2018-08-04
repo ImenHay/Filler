@@ -64,72 +64,22 @@ int				main()
 	t_game		game;
 	int i = 0;
 	int j;
-	// char		*line;
 
 	tab = NULL;
-	// get_player_map(&tab, &game);
-	// 	return (0);
 	init_struct(&game);
 	while (get_next_line(0, &tab))
 	{
-		// fprintf(stderr, "ENTREE\n");
 		if (game.player == -1)
 			get_player_map(&tab, &game);
-		// fprintf(stderr, "ENTREE 2\n");
 		map_begin(&tab);
-		// fprintf(stderr, "ENTREE 3\n");
 		copy_map(&game, game.map_x, game.map_y);
-		// fprintf(stderr, "ENTREE 4\n");
 		piece_xy(&game);
-		// fprintf(stderr, "ENTREE 5\n");
 		copy_piece(&game, game.piece_x, game.piece_y);
-		// fprintf(stderr, "ENTREE 6\n");
 		map_extract_conv(game.map, &game, game.map_x, game.map_y);
-		// printf("player = %d, x= %d, y= %d, px= %d, py= %d\n", game.player, game.map_x, game.map_y, game.piece_x, game.piece_y);
 		piece(game.map_p, &game);
-		// fprintf(stderr, "ENTREE 7\n");
-		// printf("stars= %d\n", game.piece_len);
 		near_enemy(game.map, game.map_y, game.map_x);
-		// fprintf(stderr, "ENTREE 8\n");
 		opti_place(game.map, &game);
-		// fprintf(stderr, "ENTREE 9\n");
-
-
-		// print_map(&game);
-		// set_pieec(&game, game.piece, game.valid_x, game.valid_y);
-		// print_map(&game);
-		// printf("MY y_start= %d, y_enemy %d\n", game.my_y_start, game.enmy_y_start);
-		// printf("X= %d, Y= %d // fx= %d, fy = %d\n", game.valid_x, game.valid_y, game.first_px, game.first_py);
 		dprintf(1, "%d %d\n", game.valid_y, game.valid_x);
-		// fprintf(stderr, "ENTREE 10 %d %d\n", game.valid_y, game.valid_x);
-
-		// printf("is_enemy = %d\n", is_enemy(game.map[1][2], &game));
-		// while(i < game.piece_y)
-		// {
-		// 	j = 0;
-		// 	// printf("map= %s\n", game.map[i]);
-		// 	while (j < game.piece_x)
-		// 	{
-		// 		printf("%2d ", game.piece[i][j]);
-		// 		j++;
-		// 	}
-		// 	printf("\n");
-		// 	i++;
-		// }
-
-
-		// while(i < game.map_y)
-		// {
-		// 	j = 0;
-		// 	// printf("map= %s\n", game.map[i]);
-		// 	while (j < game.map_x)
-		// 	{
-		// 		printf("%2d ", game.map[i][j]);
-		// 		j++;
-		// 	}
-		// 	printf("\n");
-		// 	i++;
-		// }
 	}
 }
 

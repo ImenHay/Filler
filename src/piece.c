@@ -23,7 +23,6 @@ int			piece_xy(t_game *game)
 	if (get_next_line(0, &tab) == 1)
 		if (!tab || !ft_strstr(tab, "Piece"))
 			return (0);
-	// printf("piece= %s\n", tab);
 	split = ft_strsplit(tab, ' ');
 	if (!split[1] || !split[2])
 		return (ERROR);

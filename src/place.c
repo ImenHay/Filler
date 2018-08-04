@@ -41,16 +41,9 @@ int		check_all(char **tab, int y, int x, t_game *g)
 		tmpx = x + (g->piece[PIECE_X][i] - g->first_px);
 		tmpy = y + (g->piece[PIECE_Y][i] - g->first_py);
 		if ((check_one_block(tab, tmpy, tmpx, g)) == ERROR)
-		{
-			// printf("HERE [%d] [X][%d] [Y][%d] [TX][%d] [TY][%d]\n", ll, tmpy, tmpx, ( g->fx), ( g->fy));
-			//  printf("ERROR tmpY = %d, tmpX = %d, i= %d, count= %d / x= %d / y =%d\n", tmpy, tmpx, i, count, x, y);
 			return (ERROR);
-		}
 		if (check_one_block(tab, tmpy, tmpx, g) == 2)
-		{
 			count++;
-			//  printf("COUNT++: Y = %d, X = %d, i= %d, count= %d\n", tmpy, tmpx, i, count);
-		}
 		i++;
 	}
 	return (count == 1 ? 1 : 0);
@@ -88,7 +81,6 @@ void	opti_place(char **tab, t_game *g)
 				if (tmp < count_enemy(tab, g))
 				{
 					tmp = count_enemy(tab, g);
-                    // printf("TMP = %d, X= %d, Y= %d\n", tmp, x, y);
 					g->valid_x = x - g->first_px;
 					g->valid_y = y - g->first_py;
 				}
