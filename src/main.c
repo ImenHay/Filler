@@ -82,15 +82,14 @@ int				main()
 		printf("player = %d, x= %d, y= %d, px= %d, py= %d\n", game.player, game.map_x, game.map_y, game.piece_x, game.piece_y);
 		piece(game.map_p, &game);
 		printf("stars= %d\n", game.piece_len);
-		// map_extract_conv(tab, &game, game.map_x, game.map_y);
-		near_enemy(game.map);
-		// opti_place(game.map, &game);
+		near_enemy(game.map, game.map_y, game.map_x);
+		opti_place(game.map, &game);
 
 		// print_map(&game);
 		// set_pieec(&game, game.piece, game.valid_x, game.valid_y);
 		// print_map(&game);
 		// printf("MY y_start= %d, y_enemy %d\n", game.my_y_start, game.enmy_y_start);
-		// printf("X= %d, Y= %d // fx= %d, fy = %d\n", game.valid_x, game.valid_y, game.first_px, game.first_py);
+		printf("X= %d, Y= %d // fx= %d, fy = %d\n", game.valid_x, game.valid_y, game.first_px, game.first_py);
 		// printf("is_enemy = %d\n", is_enemy(game.map[1][2], &game));
 		// while(i < game.piece_y)
 		// {

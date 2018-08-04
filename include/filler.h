@@ -58,13 +58,13 @@ typedef struct	s_game
 	char		is_mine;
 }				t_game;
 
-int				check_all(int **tab, int y, int x, t_game *g);
+int				check_all(char **tab, int y, int x, t_game *g);
 
-int				check_one_block(int **tab, int y, int x, t_game *g);
+int				check_one_block(char **tab, int y, int x, t_game *g);
 
 void			clear_map(t_game *game);
 
-int				count_enemy(int **tab, t_game *g);
+int				count_enemy(char **tab, t_game *g);
 
 int				count_stars(char **tab, t_game *game, int i);
 
@@ -98,9 +98,9 @@ int				map_begin(char **tab);
 
 void			map_extract_conv(char **tab, t_game *g, int x, int y);
 
-void			near_enemy(char **tab);
+void			near_enemy(char **tab, int yy, int xx);
 
-void			opti_place(int **tab, t_game *g);
+void			opti_place(char **tab, t_game *g);
 
 int				piece_xy(t_game *game);
 

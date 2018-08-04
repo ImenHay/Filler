@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-int		count_enemy(int **tab, t_game *g)
+int		count_enemy(char **tab, t_game *g)
 {
 	int block;
 	int count;
@@ -41,18 +41,19 @@ int		is_enemy(char c, t_game *g)
 	return (1);
 }
 
-void	near_enemy(char **tab)
+void	near_enemy(char **tab, int yy, int xx)
 {
 	int x;
 	int y;
 
 	x = 0;
 	y = 0;
-	while (tab[y])
+	while (tab[y] && y < yy)
 	{
 		x = 0;
-		while (tab[y][x])
+		while (x < xx)
 		{
+		// printf("inside neqr enmey \n"); 	
 			if (tab[y][x] == ENEMY_VAL)
 			{
 				if (tab[y - 1][x] == VOID_VAL)
