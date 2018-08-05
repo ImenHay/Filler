@@ -32,7 +32,7 @@ int		count_enemy(char **tab, t_game *g, int x, int y)
 			return (0);
 		if ((xx > 0 && xx < g->map_x) && (yy > 0 && yy < g->map_y) && tab[yy] && tab[yy][xx] == NEAR)
 		{
-			printf("---BOUCLE  x= %d, y= %d, count= %d\n", xx, yy, count);
+			// printf("---BOUCLE  x= %d, y= %d, count= %d\n", xx, yy, count);
 			count++;
 		}
 		block++;
@@ -95,21 +95,25 @@ void	near_enemy(char **tab, int yy, int xx)
 		x = 0;
 		while (x < xx)
 		{
-			if (tab[y][x] == ENEMY_VAL)
-			{
-				if (tab[y - 1][x + 1] == VOID_VAL)
-					tab[y - 1][x - 1] = NEAR;
-				if (tab[y + 1][x + 1] == VOID_VAL)
-					tab[y + 1][x - 1] = NEAR;
-				if (tab[y - 1][x] == VOID_VAL)
-					tab[y - 1][x] = NEAR;
-				if (tab[y + 1][x] == VOID_VAL)
-					tab[y + 1][x] = NEAR;
-				if (tab[y][x - 1] == VOID_VAL)
-					tab[y][x - 1] = NEAR;
-				if (tab[y][x + 1])
-					tab[y][x + 1] = NEAR;
-			}
+            if (tab[y][x] == ENEMY_VAL)
+            {
+                if (tab[y - 1][x + 1] == VOID_VAL)
+                    tab[y - 1][x + 1] = NEAR;
+                if (tab[y + 1][x + 1] == VOID_VAL)
+                    tab[y + 1][x + 1] = NEAR;
+                if (tab[y - 1][x - 1] == VOID_VAL)
+                    tab[y - 1][x - 1] = NEAR;
+                if (tab[y + 1][x - 1] == VOID_VAL)
+                    tab[y + 1][x - 1] = NEAR;
+                if (tab[y - 1][x] == VOID_VAL)
+                    tab[y - 1][x] = NEAR;
+                if (tab[y + 1][x] == VOID_VAL)
+                    tab[y + 1][x] = NEAR;
+                if (tab[y][x - 1] == VOID_VAL)
+                    tab[y][x - 1] = NEAR;
+                if (tab[y][x + 1] == VOID_VAL)
+                    tab[y][x + 1] = NEAR;
+            }
 			x++;
 		}
 		y++;
