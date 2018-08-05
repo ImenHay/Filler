@@ -22,16 +22,35 @@ Plateau 15 17:
 008 .................
 009 .................
 010 ....X............
-011 ....XXX..O.......
+011 ....XXX.OO.......
 012 ....X....OOO.....
-013 ...........O.....
+013 .....O.....O.....
 014 .................
 Piece 2 2:
 *.
 *.
 
-
-
+$$$ exec p1 : [players/abanlin.filler]
+Plateau 15 17:
+    01234567890123456
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOOOOOOOOOOOOOoo
+009 ..........OOOOOOO
+010 .............OOOO
+011 ...............OO
+012 ..............XOOO
+013 ................OO
+014 ................O
+Piece 2 1:
+*
+*
 
 
 $$$ exec p2 : [players/abanlin.filler]
@@ -102,48 +121,4 @@ Piece 2 3:
 .*.
 
 
-void print_map(t_game *game)
-{
-	int x = 0, y = 0;
-	int col = 0;
 
-	printf("\e[100m%4c \e[49m", ' ');
-	while (col < game->map_x)
-	{
-		printf("\e[100m%2d \e[49m", col);
-		col++;
-	}
-	printf("\n");
-	while(y < game->map_y)
-	{
-		x = 0;
-		printf("\e[100m[%2d] \e[49m", y);
-		while (x < game->map_x)
-		{
-			if (game->map[y][x] == ENEMY_VAL)
-				printf("\e[101m%2c \e[49m", 'E');
-			else if (game->map[y][x] == MY_VAL)
-				printf("\e[102m%2c \e[49m", 'v');
-			else if (game->map[y][x] == -7)
-				printf("\e[44m%2c \e[49m", 'V');
-			else 
-				printf("\e[106m\e[91m%2c \e[39m\e[49m", '.');
-			// printf("%2d ", game->map[y][x]);
-			x++;
-		}
-		y++;
-		printf("\n");
-	}
-}
-
-	void set_pieec(t_game *game, int **piece, int x, int y)
-	{
-		int ii = 0;
-		while (ii < game->piece_x)
-		{
-			if ((y + piece[PIECE_Y][ii] > 0) && (y + piece[PIECE_Y][ii]) < game->map_y \
-			&&  (x + piece[PIECE_X][ii] > 0) &&  (x + piece[PIECE_X][ii]) < game->map_x)
-				game->map[y + piece[PIECE_Y][ii] ][x + piece[PIECE_X][ii]] = -7;
-			ii++;
-		}
-	}

@@ -64,7 +64,7 @@ int				check_one_block(char **tab, int y, int x, t_game *g);
 
 void			clear_map(t_game *game);
 
-int				count_enemy(char **tab, t_game *g);
+int				count_enemy(char **tab, t_game *g, int x, int y);
 
 int				count_stars(char **tab, t_game *game, int i);
 
@@ -92,6 +92,8 @@ void			init_struct(t_game *game);
 
 int				init_game(char **tab, t_game *game);
 
+void			init_value(t_game *g);
+
 int				is_enemy(char c, t_game *g);
 
 int				map_begin(char **tab);
@@ -99,6 +101,7 @@ int				map_begin(char **tab);
 void			map_extract_conv(char **tab, t_game *g, int x, int y);
 
 void			near_enemy(char **tab, int yy, int xx);
+// void			near_enemy(t_game *g, char **tab, int yy, int xx);
 
 void			opti_place(char **tab, t_game *g);
 
