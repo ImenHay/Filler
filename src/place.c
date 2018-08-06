@@ -6,7 +6,7 @@
 /*   By: imhaimou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 04:04:10 by imhaimou          #+#    #+#             */
-/*   Updated: 2018/08/04 23:22:02 by imhaimou         ###   ########.fr       */
+/*   Updated: 2018/08/06 03:12:40 by imhaimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int			check_one_block(char **tab, int y, int x, t_game *g)
 
 int			check_all(char **tab, int y, int x, t_game *g)
 {
-	int	i;
-	int	tmpx;
-	int	tmpy;
-	int	count;
+	int		i;
+	int		tmpx;
+	int		tmpy;
+	int		count;
 
 	i = 0;
 	count = 0;
@@ -47,7 +47,7 @@ int			check_all(char **tab, int y, int x, t_game *g)
 	return (count == 1 ? 1 : ERROR);
 }
 
-void	relative_position(t_game *g, int tmp, int x, int y)
+void		relative_position(t_game *g, int tmp, int x, int y)
 {
 	if (tmp <= count_enemy(g->map, g, x, y))
 	{
@@ -63,21 +63,16 @@ void		opti_place(char **tab, t_game *g)
 	int		y;
 	char	tmp;
 
-	y = 0;
+	y = -1;
 	tmp = 0;
 	init_value(g);
-	while (y < g->map_y)
+	while (++y < g->map_y)
 	{
-		x = 0;
-		while (x < g->map_x)
+		x = -1;
+		while (++x < g->map_x)
 		{
 			if (check_all(tab, y, x, g) == 1)
 			{
-				// if (tmp == 0)
-				// {
-				// 	g->valid_x = x - g->first_px;
-				// 	g->valid_y = y - g->first_py;			
-				// }
 				relative_position(g, tmp, x, y);
 				if (tmp < count_enemy(tab, g, x, y))
 				{
@@ -86,8 +81,6 @@ void		opti_place(char **tab, t_game *g)
 					g->valid_y = y - g->first_py;
 				}
 			}
-			x++;
 		}
-		y++;
 	}
 }

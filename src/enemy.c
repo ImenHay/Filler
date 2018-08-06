@@ -6,40 +6,35 @@
 /*   By: imhaimou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/31 20:36:01 by imhaimou          #+#    #+#             */
-/*   Updated: 2018/08/04 23:19:36 by imhaimou         ###   ########.fr       */
+/*   Updated: 2018/08/06 03:23:34 by imhaimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		count_enemy(char **tab, t_game *g, int x, int y)
+int		count_enemy(char **tab, t_game *g, int xx, int yy)
 {
 	int block;
 	int count;
+	int x;
+	int y;
 
-	int xx;
-	int yy;
-
-	xx = 0;
-	yy = 0;
+	x = 0;
+	y = 0;
 	count = 1;
 	block = 0;
 	while (block < g->piece_len)
 	{
-		xx = x + (g->piece[PIECE_X][block] - g->piece[PIECE_X][0]);
-		yy = y + (g->piece[PIECE_Y][block] - g->piece[PIECE_Y][0]);
-		if ((xx < 0 || xx > g->map_x) || (yy < 0 || yy > g->map_y))
+		x = xx + (g->piece[PIECE_X][block] - g->piece[PIECE_X][0]);
+		y = yy + (g->piece[PIECE_Y][block] - g->piece[PIECE_Y][0]);
+		if ((x < 0 || x > g->map_x) || (y < 0 || y > g->map_y))
 			return (0);
-		if ((xx > 0 && xx < g->map_x) && (yy > 0 && yy < g->map_y) && tab[yy] && tab[yy][xx] == NEAR)
-		{
-			// printf("---BOUCLE  x= %d, y= %d, count= %d\n", xx, yy, count);
+		if ((x < g->map_x) && (y < g->map_y) && tab[y] && tab[y][x] == NEAR)
 			count++;
-		}
 		block++;
 	}
 	return (count);
 }
-
 
 int		is_enemy(char c, t_game *g)
 {
@@ -50,71 +45,36 @@ int		is_enemy(char c, t_game *g)
 	return (1);
 }
 
-// void	near_enemy(t_game *g, char **tab, int yy, int xx)
-// {
-// 	int x;
-// 	int y;
-
-// 	x = 0;
-// 	y = 0;
-// 	while (tab[y] && y < yy)
-// 	{
-// 		x = 0;
-// 		while (x < xx)
-// 		{
-// 			if (tab[y] && tab[y][x] == ENEMY_VAL)
-// 			{
-// 				if ((x  -1 > 0 && x - 1 < g->map_x) && (y - 1 > 0 && y - 1  < g->map_y) && tab[y -1] &&  tab[y - 1][x + 1] == VOID_VAL)
-// 					tab[y - 1][x - 1] = NEAR;
-// 				if ((x - 1 > 0 && x - 1 < g->map_x) && (y + 1 > 0 && y + 1 < g->map_y) && tab[y + 1] && tab[y + 1][x + 1] == VOID_VAL)
-// 					tab[y + 1][x - 1] = NEAR;
-// 				if ((x > 0 && x < g->map_x) && (y - 1 > 0 && y - 1 < g->map_y) && tab[y - 1] && tab[y - 1][x] == VOID_VAL)
-// 					tab[y - 1][x] = NEAR;
-// 				if ((x > 0 && x < g->map_x) && (y + 1 > 0 && y + 1 < g->map_y) && tab[y + 1] && tab[y + 1][x] == VOID_VAL)
-// 					tab[y + 1][x] = NEAR;
-// 				if ((x - 1 > 0 && x - 1 < g->map_x) && (y > 0 && y < g->map_y) && tab[y] && tab[y][x - 1] == VOID_VAL)
-// 					tab[y][x - 1] = NEAR;
-// 				if ((x + 1 > 0 && x + 1 < g->map_x) && (y > 0 && y < g->map_y) && tab[y] && tab[y][x + 1])
-// 					tab[y][x + 1] = NEAR;
-// 			}
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }
-
 void	near_enemy(char **tab, int yy, int xx, t_game *g)
 {
 	int x;
 	int y;
 
-	y = 1;
-	while (y < yy - 1)
+	y = 0;
+	while (++y < yy - 1)
 	{
-		x = 1;
-		while (x < xx - 1)
+		x = 0;
+		while (++x < xx - 1)
 		{
-            if (tab[y][x] == ENEMY_VAL)
-            {
-                if (tab[y - 1][x + 1] == VOID_VAL)
-                    tab[y - 1][x + 1] = NEAR;
-                if (tab[y + 1][x + 1] == VOID_VAL)
-                    tab[y + 1][x + 1] = NEAR;
-                if (tab[y - 1][x - 1] == VOID_VAL)
-                    tab[y - 1][x - 1] = NEAR;
-                if (tab[y + 1][x - 1] == VOID_VAL)
-                    tab[y + 1][x - 1] = NEAR;
-                if (tab[y - 1][x] == VOID_VAL)
-                    tab[y - 1][x] = NEAR;
-                if (tab[y + 1][x] == VOID_VAL)
-                    tab[y + 1][x] = NEAR;
-                if (tab[y][x - 1] == VOID_VAL)
-                    tab[y][x - 1] = NEAR;
-                if (tab[y][x + 1] == VOID_VAL)
-                    tab[y][x + 1] = NEAR;
-            }
-			x++;
+			if (tab[y][x] == ENEMY_VAL)
+			{
+				if (tab[y - 1][x + 1] == VOID_VAL)
+					tab[y - 1][x + 1] = NEAR;
+				if (tab[y + 1][x + 1] == VOID_VAL)
+					tab[y + 1][x + 1] = NEAR;
+				if (tab[y - 1][x - 1] == VOID_VAL)
+					tab[y - 1][x - 1] = NEAR;
+				if (tab[y + 1][x - 1] == VOID_VAL)
+					tab[y + 1][x - 1] = NEAR;
+				if (tab[y - 1][x] == VOID_VAL)
+					tab[y - 1][x] = NEAR;
+				if (tab[y + 1][x] == VOID_VAL)
+					tab[y + 1][x] = NEAR;
+				if (tab[y][x - 1] == VOID_VAL)
+					tab[y][x - 1] = NEAR;
+				if (tab[y][x + 1] == VOID_VAL)
+					tab[y][x + 1] = NEAR;
+			}
 		}
-		y++;
 	}
 }
