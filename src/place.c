@@ -44,7 +44,6 @@ int			check_all(char **tab, int y, int x, t_game *g)
 			count++;
 		i++;
 	}
-	// fprintf(stderr, " >>>>>>>>>>. GOT COUNT[%d]\n", count);
 	return (count == 1 ? 1 : ERROR);
 }
 
@@ -57,67 +56,6 @@ void	relative_position(t_game *g, int tmp, int x, int y)
 		g->valid_y = y - g->first_py;
 	}
 }
-
-// void		opti_place(char **tab, t_game *g)
-// {
-// 	int		x;
-// 	int		y;
-// 	char	tmp;
-
-// 	y = 0;
-// 	tmp = 0;
-// 	static int ii;
-// 	// fprintf(stderr, "STATIC : [%d] ----------------------------\n", ii);
-// 	ii++;
-// 	while (y < g->map_y)
-// 	{
-// 		x = 0;
-// 		while (x < g->map_x)
-// 		{
-// 			if (tab[y][x] == MY_VAL && check_all(tab, y, x, g) == 1)
-// 			{
-// 				g->valid_x = x - g->first_px;
-// 				g->valid_y = y - g->first_py;
-
-// 				// if (g->my_y_start <= g->enmy_y_start)
-// 				// 	relative_position(g, tmp, x, y);
-// 			else
-// 			{
-// 				// printf("--------------------------------\n");
-// 				// printf("my_y[%d] enm_y[%d] tmp[%d] count[%d]\n", g->my_y_start , g->enmy_y_start, tmp, count_enemy(tab, g, x, y));
-// 				// printf("--------------------------------\n");
-// 				if (g->my_y_start > g->enmy_y_start)
-// 				{
-// 					if (tmp < count_enemy(tab, g, x, y))
-// 					{
-// 						tmp = count_enemy(tab, g, x, y);
-// 						g->valid_x = x - g->first_px;
-// 						g->valid_y = y - g->first_py;
-// 				// 		// printf("CAME TO CHAGE 01 \n");
-// 					}
-// 				}
-// 				else
-// 				{
-// 					// fprintf(stderr, "CAME HERE --->>> [%d] \n", count_enemy(tab, g, x, y));
-// 					if (tmp <= count_enemy(tab, g, x, y))
-// 					{
-// 						tmp = count_enemy(tab, g, x, y);
-// 						g->valid_x = x - g->first_px;
-// 						g->valid_y = y - g->first_py;
-// 						// printf("CAME TO CHAGE 02 \n");
-// 					}
-// 					// fprintf(stderr, "FOUND PLACE \n");
-						
-
-// 				}
-// 			}
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// 	// fprintf(stderr, "exiting static-------------------------------\n");
-// }
-
 
 void		opti_place(char **tab, t_game *g)
 {
@@ -135,12 +73,12 @@ void		opti_place(char **tab, t_game *g)
 		{
 			if (check_all(tab, y, x, g) == 1)
 			{
-				if (tmp == 0)
-				{
-					g->valid_x = x - g->first_px;
-					g->valid_y = y - g->first_py;			
-				}
-				// relative_position(g, tmp, x, y);
+				// if (tmp == 0)
+				// {
+				// 	g->valid_x = x - g->first_px;
+				// 	g->valid_y = y - g->first_py;			
+				// }
+				relative_position(g, tmp, x, y);
 				if (tmp < count_enemy(tab, g, x, y))
 				{
 					tmp = count_enemy(tab, g, x, y);

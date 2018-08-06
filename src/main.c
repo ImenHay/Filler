@@ -78,7 +78,7 @@ int			main(void)
 		map_extract_conv(game.map, &game, game.map_x, game.map_y);
 		piece(game.map_p, &game);
 		// near_enemy(&game, game.map, game.map_y, game.map_x);
-		near_enemy(game.map, game.map_y, game.map_x);
+		near_enemy(game.map, game.map_y, game.map_x, &game);
 
 		// print_map(&game);
 		opti_place(game.map, &game);

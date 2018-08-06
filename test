@@ -404,3 +404,22 @@ Piece 2 2:
 == O fin: 126
 
 --------------------------------------------------
+$$$ exec p1 : [players/abanlin.filler]
+Plateau 15 17:
+    01234567890123456
+000 ................x
+001 ...............Xx
+002 ..............XXX
+003 ...........XXXXXX
+004 ...............XX
+005 .............XXXX
+006 ........OOO...XXX
+007 ........OOXXXXXXX
+008 ..O.....OOOOXXXXX
+009 ..O.......OOOXXXX
+010 ..OO......OOXXXX.
+011 ..OOOO....OXXXX..
+012 ...OOO....OXXXXXX
+013 ...OOOOOOOOOOOOOO
+014 .....OOOOOOOOOOOO
+Piece 1 2:

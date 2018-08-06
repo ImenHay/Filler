@@ -83,17 +83,16 @@ int		is_enemy(char c, t_game *g)
 // 	}
 // }
 
-void	near_enemy(char **tab, int yy, int xx)
+void	near_enemy(char **tab, int yy, int xx, t_game *g)
 {
 	int x;
 	int y;
 
-	x = 0;
-	y = 0;
-	while (tab[y] && y < yy)
+	y = 1;
+	while (y < yy - 1)
 	{
-		x = 0;
-		while (x < xx)
+		x = 1;
+		while (x < xx - 1)
 		{
             if (tab[y][x] == ENEMY_VAL)
             {

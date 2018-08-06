@@ -100,8 +100,7 @@ int				map_begin(char **tab);
 
 void			map_extract_conv(char **tab, t_game *g, int x, int y);
 
-void			near_enemy(char **tab, int yy, int xx);
-// void			near_enemy(t_game *g, char **tab, int yy, int xx);
+void			near_enemy(char **tab, int yy, int xx, t_game *g);
 
 void			opti_place(char **tab, t_game *g);
 
