@@ -39,7 +39,6 @@ typedef struct	s_game
 {
 	int			my_y_start;
 	int			enmy_y_start;
-	int			north;
 	int			valid_x;
 	int			valid_y;
 	int			start_piece;
@@ -55,14 +54,11 @@ typedef struct	s_game
 	int			map_y;
 	int			first_px;
 	int			first_py;
-	char		is_mine;
 }				t_game;
 
 int				check_all(char **tab, int y, int x, t_game *g);
 
 int				check_one_block(char **tab, int y, int x, t_game *g);
-
-void			clear_map(t_game *game);
 
 int				count_enemy(char **tab, t_game *g, int x, int y);
 
@@ -73,8 +69,6 @@ int				conv(char c, int y, t_game *g);
 int				copy_piece(t_game *g, int x, int y);
 
 int				copy_map(t_game *g, int x, int y);
-
-int				distance_to_enemy(int x, int y, int enemy_x, int enemy_y);
 
 int				ft_aatoi(char *str);
 

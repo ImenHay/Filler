@@ -16,7 +16,6 @@ void	init_struct(t_game *game)
 {
 	game->my_y_start = -1;
 	game->enmy_y_start = -1;
-	game->north = 0;
 	game->valid_x = 0;
 	game->valid_y = 0;
 	game->start_piece = 0;
