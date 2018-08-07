@@ -45,4 +45,6 @@ void				put_result(int y, int x)
 	write(1, " ", 1);
 	ft_putstr(yy = ft_itoa(x));
 	write(1, "\n", 1);
+	ft_memdel((void**)&xx);
+	ft_memdel((void**)&yy);
 }
