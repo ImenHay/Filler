@@ -28,7 +28,11 @@ int			piece_xy(t_game *game)
 		return (ERROR);
 	game->piece_y = ft_aatoi(split[1]);
 	game->piece_x = ft_aatoi(split[2]);
-	free(split);
+	ft_memdel((void**)&split[0]);
+	ft_memdel((void**)&split[1]);
+	ft_memdel((void**)&split[2]);
+	ft_memdel((void**)&split);
+	free(tab);
 	return (1);
 }
 
