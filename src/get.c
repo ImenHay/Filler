@@ -40,6 +40,10 @@ int			get_map_size(char **tab, t_game *game)
 	{
 		game->map_y = ft_aatoi(split[1]);
 		game->map_x = ft_aatoi(split[2]);
+		ft_memdel((void**)&split[0]);
+		ft_memdel((void**)&split[1]);
+		ft_memdel((void**)&split[2]);
+		ft_memdel((void**)&split);
 		return (1);
 	}
 	return (0);

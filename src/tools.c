@@ -35,3 +35,14 @@ int					ft_aatoi(char *str)
 	}
 	return (result);
 }
+
+void				put_result(int y, int x)
+{
+	char *xx;
+	char *yy;
+
+	ft_putstr(xx = ft_itoa(y));
+	write(1, " ", 1);
+	ft_putstr(yy = ft_itoa(x));
+	write(1, "\n", 1);
+}

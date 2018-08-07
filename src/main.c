@@ -32,6 +32,6 @@ int			main(void)
 		piece(game.map_p, &game);
 		near_enemy(game.map, game.map_y, game.map_x, &game);
 		opti_place(game.map, &game);
-		dprintf(1, "%d %d\n", game.valid_y, game.valid_x);
+		put_result(game.valid_y, game.valid_x);
 	}
 }

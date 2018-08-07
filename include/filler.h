@@ -104,6 +104,8 @@ void			piece_coord(char **tab, t_game *game, int i, int stars);
 
 int				piece(char **tab, t_game *game);
 
+void			put_result(int y, int x);
+
 char			**read_vm();
 
 void			relative_position(t_game *g, int tmp, int x, int y);
