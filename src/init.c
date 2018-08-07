@@ -18,7 +18,6 @@ void	init_struct(t_game *game)
 	game->enmy_y_start = -1;
 	game->valid_x = 0;
 	game->valid_y = 0;
-	game->start_piece = 0;
 	game->player = -1;
 	game->piece[0] = NULL;
 	game->piece[1] = NULL;

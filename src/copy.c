@@ -44,7 +44,6 @@ int			copy_piece(t_game *g, int x, int y)
 {
 	char	*tab;
 	int		i;
-	int		j;
 
 	i = 0;
 	if (!(g->map_p = (char **)malloc(sizeof(char*) * (y + 1))))

@@ -41,7 +41,6 @@ typedef struct	s_game
 	int			enmy_y_start;
 	int			valid_x;
 	int			valid_y;
-	int			start_piece;
 	int			player;
 	int			*piece[2];
 	int			piece_len;
