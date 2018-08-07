@@ -35,6 +35,7 @@ int		map_begin(char **tab)
 {
 	if (get_next_line(0, tab) == -1)
 		return (ERROR);
+	ft_memdel((void**)tab);
 	return (1);
 }
 

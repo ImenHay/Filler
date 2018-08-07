@@ -44,6 +44,7 @@ int			get_map_size(char **tab, t_game *game)
 		ft_memdel((void**)&split[1]);
 		ft_memdel((void**)&split[2]);
 		ft_memdel((void**)&split);
+		ft_memdel((void**)tab);
 		return (1);
 	}
 	return (0);
