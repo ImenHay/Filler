@@ -65,7 +65,7 @@ static inline void	around(char **tab, int y, int x)
 		tab[y][x + 1] = NEAR;
 }
 
-int				near_enemy(char **tab, int yy, int xx, t_game *g)
+int				near_enemy(char **tab, int yy, int xx)
 {
 	int x;
 	int y;

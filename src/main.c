@@ -21,7 +21,7 @@ int	parse_map(t_game *game, char *tab)
 		return (0);
 	if (!(piece_xy(game)))
 		return (0);
-	if (!(copy_piece(game, game->piece_x, game->piece_y)))
+	if (!(copy_piece(game, game->piece_y)))
 		return (0);
 	if (!(map_extract_conv(game->map, game, game->map_x, game->map_y)))
 		return (0);
@@ -50,7 +50,7 @@ int			main(void)
 		// map_extract_conv(game.map, &game, game.map_x, game.map_y);
 		// piece(game.map_p, &game);
 		parse_map(&game, tab);
-		if (!(near_enemy(game.map, game.map_y, game.map_x, &game)))
+		if (!(near_enemy(game.map, game.map_y, game.map_x)))
 			return (0);
 		if (!(opti_place(game.map, &game)))
 			return (0);

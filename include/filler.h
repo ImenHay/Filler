@@ -65,7 +65,7 @@ int				count_stars(char **tab, t_game *game, int i);
 
 int				conv(char c, int y, t_game *g);
 
-int				copy_piece(t_game *g, int x, int y);
+int				copy_piece(t_game *g, int y);
 
 int				copy_map(t_game *g, int x, int y);
 
@@ -93,7 +93,7 @@ int				map_begin(char **tab);
 
 int				map_extract_conv(char **tab, t_game *g, int x, int y);
 
-int				near_enemy(char **tab, int yy, int xx, t_game *g);
+int				near_enemy(char **tab, int yy, int xx);
 
 int				opti_place(char **tab, t_game *g);
 

@@ -41,7 +41,7 @@ int			copy_map(t_game *g, int x, int y)
 	return (1);
 }
 
-int			copy_piece(t_game *g, int x, int y)
+int			copy_piece(t_game *g, int y)
 {
 	char	*tab;
 	int		i;

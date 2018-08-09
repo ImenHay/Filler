@@ -62,7 +62,7 @@ int			count_stars(char **tab, t_game *game, int i)
 	return (1);
 }
 
-int		piece_coord(char **tab, t_game *game, int i, int stars)
+int			piece_coord(char **tab, t_game *g, int i, int stars)
 {
 	int		j;
 	int		k;
@@ -70,25 +70,22 @@ int		piece_coord(char **tab, t_game *game, int i, int stars)
 
 	k = -1;
 	l = 0;
-	if (!tab || !game)
+	if (!tab || !g)
 		return (ERROR);
-	if (!(game->piece[PIECE_X] = (int *)malloc(sizeof(int) *\
-			(game->piece_x * game->piece_y + 1))))
+	if (!(g->piece[0] = (int *)malloc(sizeof(int) * (stars + 1))))
 		return (ERROR);
-	if (!(game->piece[PIECE_Y] = (int *)malloc(sizeof(int) *\
-			(game->piece_x * game->piece_y + 1))))
+	if (!(g->piece[1] = (int *)malloc(sizeof(int) * (stars + 1))))
 		return (ERROR);
-	while (++k < game->piece_y)
+	while (++k < g->piece_y)
 	{
-		j = 0;
-		while (j < game->piece_x)
+		j = -1;
+		while (++j < g->piece_x)
 		{
 			if (tab[i + k][j] == '*')
 			{
-				game->piece[PIECE_X][l] = j;
-				game->piece[PIECE_Y][l++] = k;
+				g->piece[PIECE_X][l] = j;
+				g->piece[PIECE_Y][l++] = k;
 			}
-			j++;
 		}
 	}
 	return (1);
@@ -100,7 +97,7 @@ int			piece(char **tab, t_game *game)
 		return (ERROR);
 	if (!(count_stars(tab, game, 0)))
 		return (ERROR);
-	if (!(piece_coord(tab, game, 0, game->piece_len)))
+	if (!(piece_coord(tab, game, 0, game->piece_x * game->piece_y)))
 		return (ERROR);
 	game->first_px = game->piece[PIECE_X][0];
 	game->first_py = game->piece[PIECE_Y][0];
