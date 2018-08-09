@@ -91,15 +91,17 @@ int				is_enemy(char c, t_game *g);
 
 int				map_begin(char **tab);
 
-void			map_extract_conv(char **tab, t_game *g, int x, int y);
+int				map_extract_conv(char **tab, t_game *g, int x, int y);
 
-void			near_enemy(char **tab, int yy, int xx, t_game *g);
+int				near_enemy(char **tab, int yy, int xx, t_game *g);
 
-void			opti_place(char **tab, t_game *g);
+int				opti_place(char **tab, t_game *g);
+
+int				parse_map(t_game *game, char *tab);
 
 int				piece_xy(t_game *game);
 
-void			piece_coord(char **tab, t_game *game, int i, int stars);
+int				piece_coord(char **tab, t_game *game, int i, int stars);
 
 int				piece(char **tab, t_game *game);
 

@@ -25,6 +25,7 @@ int			copy_map(t_game *g, int x, int y)
 	{
 		tab = NULL;
 		j = -1;
+		ft_memdel((void**)tab);
 		get_next_line(0, &tab);
 		if (!(g->map[i] = (char*)malloc(sizeof(char) * (x + 1))))
 			return (0);
@@ -51,6 +52,7 @@ int			copy_piece(t_game *g, int x, int y)
 	while (i < y)
 	{
 		tab = NULL;
+		ft_memdel((void**)tab);
 		if (get_next_line(0, &tab) == -1)
 			return (0);
 		g->map_p[i] = tab;

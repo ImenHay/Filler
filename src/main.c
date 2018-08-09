@@ -12,6 +12,24 @@
 
 #include "filler.h"
 
+
+int	parse_map(t_game *game, char *tab)
+{
+	if (!(map_begin(&tab)))
+		return (0);
+	if (!(copy_map(game, game->map_x, game->map_y)))
+		return (0);
+	if (!(piece_xy(game)))
+		return (0);
+	if (!(copy_piece(game, game->piece_x, game->piece_y)))
+		return (0);
+	if (!(map_extract_conv(game->map, game, game->map_x, game->map_y)))
+		return (0);
+	if (!(piece(game->map_p, game)))
+		return (0);
+	return (1);
+}
+
 int			main(void)
 {
 	char	*tab;
@@ -24,14 +42,19 @@ int			main(void)
 		if (game.player == -1)
 			if (!get_player_map(&tab, &game))
 				return (0);
-		map_begin(&tab);
-		copy_map(&game, game.map_x, game.map_y);
-		piece_xy(&game);
-		copy_piece(&game, game.piece_x, game.piece_y);
-		map_extract_conv(game.map, &game, game.map_x, game.map_y);
-		piece(game.map_p, &game);
-		near_enemy(game.map, game.map_y, game.map_x, &game);
-		opti_place(game.map, &game);
+		// map_begin(&tab);
+		// if (!(copy_map(&game, game.map_x, game.map_y)))
+		// 	return (0);
+		// piece_xy(&game);
+		// copy_piece(&game, game.piece_x, game.piece_y);
+		// map_extract_conv(game.map, &game, game.map_x, game.map_y);
+		// piece(game.map_p, &game);
+		parse_map(&game, tab);
+		if (!(near_enemy(game.map, game.map_y, game.map_x, &game)))
+			return (0);
+		if (!(opti_place(game.map, &game)))
+			return (0);
 		put_result(game.valid_y, game.valid_x);
 	}
+	return (0);
 }

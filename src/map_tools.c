@@ -39,13 +39,15 @@ int		map_begin(char **tab)
 	return (1);
 }
 
-void	map_extract_conv(char **tab, t_game *g, int x, int y)
+int		map_extract_conv(char **tab, t_game *g, int x, int y)
 {
 	int xx;
 	int yy;
 
 	xx = 0;
 	yy = 0;
+	if (!tab || x < 0 || y < 0)
+		return (ERROR);
 	while (yy < y)
 	{
 		xx = -1;
@@ -53,4 +55,5 @@ void	map_extract_conv(char **tab, t_game *g, int x, int y)
 			tab[yy][xx] = conv(tab[yy][xx], yy, g);
 		yy++;
 	}
+	return (1);
 }

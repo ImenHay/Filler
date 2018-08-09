@@ -57,7 +57,7 @@ void		relative_position(t_game *g, int tmp, int x, int y)
 	}
 }
 
-void		opti_place(char **tab, t_game *g)
+int			opti_place(char **tab, t_game *g)
 {
 	int		x;
 	int		y;
@@ -65,6 +65,8 @@ void		opti_place(char **tab, t_game *g)
 
 	y = -1;
 	tmp = 0;
+	if (!tab)
+		return (0);
 	init_value(g);
 	while (++y < g->map_y)
 	{
@@ -83,4 +85,5 @@ void		opti_place(char **tab, t_game *g)
 			}
 		}
 	}
+	return (1);
 }
