@@ -58,6 +58,7 @@ int			copy_piece(t_game *g, int y)
 		g->map_p[i] = tab;
 		i++;
 	}
+	free(tab);
 	g->map_p[i] = NULL;
 	return (1);
 }

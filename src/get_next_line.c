@@ -48,8 +48,7 @@ int	get_next_line(const int fd, char **line)
 
 	if (fd < 0 || !line || BUFF_SIZE <= 0)
 		return (-1);
-	if (*line)
-		*line = "";
+	ft_strdel(line);
 	r = !r ? ft_strnew(1) : r;
 	while (!(ft_strchr(r, '\n')))
 	{

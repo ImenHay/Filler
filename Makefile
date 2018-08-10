@@ -1,6 +1,6 @@
 CC = gcc
-#FLAGS =   -g -Wall -Werror -Wextra
-FLAGS = -g -O1	-fsanitize=address	\
+FLAGS =   -g -Wall -Werror -Wextra
+#FLAGS = -g -O1	-fsanitize=address	\
 				-fno-omit-frame-pointer		\
 				-fsanitize-address-use-after-scope \
 

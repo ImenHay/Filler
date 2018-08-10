@@ -14,15 +14,33 @@
 
 int			get_player(char **tab, t_game *game)
 {
+	char *tmp;
 	if (!*tab)
 		return (0);
 	if (ft_strstr(*tab, "exec p"))
 	{
-		game->player = ft_aatoi(*tab);
+		tmp = strdup(*tab);
+		game->player = ft_aatoi(tmp);
+		// ft_memdel((void**)&tab[0]);
+		free(tmp);
 		return (1);
 	}
 	return (0);
 }
+
+void	free_tab(char **tab, int nb)
+{
+	int i;
+
+	i = 0;
+	while (i < nb)
+	{
+		ft_memdel((void**)&tab[i]);
+		i++;
+	}
+	ft_memdel((void**)&tab);
+}
+
 
 int			get_map_size(char **tab, t_game *game)
 {
