@@ -6,7 +6,7 @@
 /*   By: imhaimou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/31 20:50:35 by imhaimou          #+#    #+#             */
-/*   Updated: 2018/08/10 09:53:25 by imhaimou         ###   ########.fr       */
+/*   Updated: 2018/08/10 10:14:35 by imhaimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # define FILLER_H
 
 # include "../libft/includes/libft.h"
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 
