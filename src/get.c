@@ -21,14 +21,13 @@ int			get_player(char **tab, t_game *game)
 	{
 		tmp = strdup(*tab);
 		game->player = ft_aatoi(tmp);
-		// ft_memdel((void**)&tab[0]);
 		free(tmp);
 		return (1);
 	}
 	return (0);
 }
 
-void	free_tab(char **tab, int nb)
+void		free_tab(char **tab, int nb)
 {
 	int i;
 

@@ -24,51 +24,36 @@ static void	free_map(char **map)
 	free(map);
 }
 
-static void	free_game(t_game *game)
-{
-	free_map(game->map_p);
-}
-
 static void	free_imap(int *map[2])
 {
 	free(map[0]);
 	free(map[1]);
 }
 
-int	parse_map(t_game *game, char **tab)
+static int	parse_map(t_game *game, char **tab)
 {
 	if (!(map_begin(tab)))
-	{
-		fprintf(stderr, "map_begin\n");
 		return (0);
-	}
-
 	if (!(copy_map(game, game->map_x, game->map_y)))
-	{
-		fprintf(stderr, "copy_map\n");
 		return (0);
-	}
 	if (!(piece_xy(game)))
-	{
-		fprintf(stderr, "piece_xy\n");
 		return (0);
-	}
 	if (!(copy_piece(game, game->piece_y)))
-	{
-		fprintf(stderr, "copy_piece\n");
 		return (0);
-	}
 	if (!(map_extract_conv(game->map, game, game->map_x, game->map_y)))
-	{
-		fprintf(stderr, "map_extract_conv\n");
 		return (0);
-	}
 	if (!(piece(game->map_p, game)))
-	{
-		fprintf(stderr, "piece\n");
 		return (0);
-	}
 	return (1);
+}
+
+static inline void gen_free(t_game *game)
+{
+	free_imap(game->piece);
+	free_map(game->map_p);
+	free_map(game->map);
+	game->map = NULL;
+	game->map_p = NULL;
 }
 
 int			main(void)
@@ -86,7 +71,6 @@ int			main(void)
 		if (parse_map(&game, &tab) == 0)
 		{
 			put_result(-1, -1);
-			/* free what ever is needed */
 			return (0);
 		}
 		if (!(near_enemy(game.map, game.map_y, game.map_x)))
@@ -94,14 +78,7 @@ int			main(void)
 		if (!(opti_place(game.map, &game)))
 			return (0);
 		put_result(game.valid_y, game.valid_x);
-		// init_value(&game);
-		free_imap(game.piece);
-		free_game(&game);
-		// printf("t0\n");
-		free_map(game.map);
-		// printf("t0\n");
-		game.map = NULL;
-		game.map_p = NULL;
+		gen_free(&game);
 	}
 	return (0);
 }
