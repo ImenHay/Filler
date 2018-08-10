@@ -97,7 +97,7 @@ int				near_enemy(char **tab, int yy, int xx);
 
 int				opti_place(char **tab, t_game *g);
 
-int				parse_map(t_game *game, char *tab);
+// int				parse_map(t_game *game, char *tab);
 
 int				piece_xy(t_game *game);
 

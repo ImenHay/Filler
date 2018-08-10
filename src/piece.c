@@ -32,7 +32,7 @@ int			piece_xy(t_game *game)
 	ft_memdel((void**)&split[1]);
 	ft_memdel((void**)&split[2]);
 	ft_memdel((void**)&split);
-	free(tab);
+	ft_strdel(&tab);
 	return (1);
 }
 

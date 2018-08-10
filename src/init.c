@@ -34,6 +34,6 @@ void	init_struct(t_game *game)
 
 void	init_value(t_game *g)
 {
-	g->valid_x = 0;
-	g->valid_y = 0;
+	g->valid_x = -1;
+	g->valid_y = -1;
 }
