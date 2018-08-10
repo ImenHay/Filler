@@ -6,14 +6,14 @@
 /*   By: imhaimou <imhaimou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 19:06:48 by imhaimou          #+#    #+#             */
-/*   Updated: 2018/05/15 01:06:59 by imhaimou         ###   ########.fr       */
+/*   Updated: 2018/08/10 09:56:25 by imhaimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <stdint.h>
+# include <stdint.h>
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>

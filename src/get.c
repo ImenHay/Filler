@@ -6,7 +6,7 @@
 /*   By: imhaimou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 03:37:44 by imhaimou          #+#    #+#             */
-/*   Updated: 2018/08/04 23:20:11 by imhaimou         ###   ########.fr       */
+/*   Updated: 2018/08/10 09:46:06 by imhaimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int			get_player(char **tab, t_game *game)
 {
 	char *tmp;
+
 	if (!*tab)
 		return (0);
 	if (ft_strstr(*tab, "exec p"))
@@ -40,10 +41,9 @@ void		free_tab(char **tab, int nb)
 	ft_memdel((void**)&tab);
 }
 
-
 int			get_map_size(char **tab, t_game *game)
 {
-	char	**split;
+	char **split;
 
 	split = NULL;
 	while (!ft_strstr(*tab, "Plateau"))

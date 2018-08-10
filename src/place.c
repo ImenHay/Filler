@@ -6,7 +6,7 @@
 /*   By: imhaimou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 04:04:10 by imhaimou          #+#    #+#             */
-/*   Updated: 2018/08/06 03:12:40 by imhaimou         ###   ########.fr       */
+/*   Updated: 2018/08/10 09:50:12 by imhaimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int			opti_place(char **tab, t_game *g)
 	{
 		x = -1;
 		while (++x < g->map_x)
-		{
 			if (check_all(tab, y, x, g) == 1)
 			{
 				relative_position(g, tmp, x, y);
@@ -83,7 +82,6 @@ int			opti_place(char **tab, t_game *g)
 					g->valid_y = y - g->first_py;
 				}
 			}
-		}
 	}
 	return (1);
 }

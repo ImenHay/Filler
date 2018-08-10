@@ -6,7 +6,7 @@
 /*   By: imhaimou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/31 20:50:35 by imhaimou          #+#    #+#             */
-/*   Updated: 2018/07/31 20:59:10 by imhaimou         ###   ########.fr       */
+/*   Updated: 2018/08/10 09:53:25 by imhaimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,6 @@ int				map_extract_conv(char **tab, t_game *g, int x, int y);
 int				near_enemy(char **tab, int yy, int xx);
 
 int				opti_place(char **tab, t_game *g);
-
-// int				parse_map(t_game *game, char *tab);
 
 int				piece_xy(t_game *game);
 

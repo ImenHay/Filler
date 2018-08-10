@@ -6,13 +6,13 @@
 /*   By: imhaimou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 04:12:04 by imhaimou          #+#    #+#             */
-/*   Updated: 2018/08/04 23:27:50 by imhaimou         ###   ########.fr       */
+/*   Updated: 2018/08/10 09:48:32 by imhaimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-static void	free_map(char **map)
+static inline void	free_map(char **map)
 {
 	int		i;
 
@@ -24,13 +24,13 @@ static void	free_map(char **map)
 	free(map);
 }
 
-static void	free_imap(int *map[2])
+static inline void	free_imap(int *map[2])
 {
 	free(map[0]);
 	free(map[1]);
 }
 
-static int	parse_map(t_game *game, char **tab)
+static inline int	parse_map(t_game *game, char **tab)
 {
 	if (!(map_begin(tab)))
 		return (0);
@@ -47,7 +47,7 @@ static int	parse_map(t_game *game, char **tab)
 	return (1);
 }
 
-static inline void gen_free(t_game *game)
+static inline void	gen_free(t_game *game)
 {
 	free_imap(game->piece);
 	free_map(game->map_p);
@@ -56,7 +56,7 @@ static inline void gen_free(t_game *game)
 	game->map_p = NULL;
 }
 
-int			main(void)
+int					main(void)
 {
 	char	*tab;
 	t_game	game;

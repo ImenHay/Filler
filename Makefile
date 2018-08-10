@@ -1,6 +1,7 @@
-CC = gcc
-#FLAGS =   -g -Wall -Werror -Wextra
-FLAGS = -g 	-fsanitize=address	\
+CC	= gcc
+FLAGS =		 -Wall -Werror -Wextra
+
+FLAGS_ASAN = -g 	-fsanitize=address	\
 				-fno-omit-frame-pointer		\
 				-fsanitize-address-use-after-scope \
 				-Wall -Werror -Wextra
@@ -32,6 +33,8 @@ SRC_NAME =	main.c      \
 
 LIB_NAME = libft.a
 
+LIBFT_A_P = $(LIB_PATH)/$(LIB_NAME)
+
 INC_NAME = filler.h
 
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
@@ -39,15 +42,19 @@ LIB = $(addprefix $(LIB_PATH)/, $(LIB_NAME))
 INC = $(addprefix $(INC_PATH)/, $(INC_NAME))
 
 
-all:
-	@make -C $(LIB_PATH)
-	#@$(CC) $(FLAGS)  -I./include $(SRC) $(LIB) -o $(NAME)
-		@$(CC) $(FLAGS) -I./include $(SRC) $(LIB) -o $(NAME)
+all : $(NAME) $(LIBFT_A_P)
+
+$(NAME): $(SRC) $(INC) $(LIBFT_A_P)
+		$(CC) $(FLAGS) -I./include $(SRC) $(LIB) -o $(NAME)
 	@echo "\033[1;34m$(NAME_PROJECT)\t\033[1;33mCompilation\t\033[0;32m[OK]\033[0m"
 
 clean:
 	@make clean -C $(LIB_PATH)
 	@echo "\033[1;34m$(NAME_PROJECT)\t\033[1;33mCleaning obj\t\033[0;32m[OK]\033[0m"
+
+$(LIBFT_A_P):
+	@make -C $(LIB_PATH)
+
 
 fclean: clean
 	@make fclean -C libft

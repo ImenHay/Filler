@@ -6,7 +6,7 @@
 /*   By: imhaimou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 03:47:13 by imhaimou          #+#    #+#             */
-/*   Updated: 2018/07/31 20:43:22 by imhaimou         ###   ########.fr       */
+/*   Updated: 2018/08/10 09:49:10 by imhaimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			piece_xy(t_game *game)
 			return (0);
 		if (!ft_strstr(tab, "Piece"))
 		{
-			ft_memdel((void **) &tab);
+			ft_memdel((void **)&tab);
 			return (0);
 		}
 	}
