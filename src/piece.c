@@ -14,15 +14,20 @@
 
 int			piece_xy(t_game *game)
 {
-	int		i;
 	char	**split;
 	char	*tab;
 
 	tab = NULL;
-	i = 0;
 	if (get_next_line(0, &tab) == 1)
-		if (!tab || !ft_strstr(tab, "Piece"))
+	{
+		if (!tab)
 			return (0);
+		if (!ft_strstr(tab, "Piece"))
+		{
+			ft_memdel((void **) &tab);
+			return (0);
+		}
+	}
 	split = ft_strsplit(tab, ' ');
 	if (!split[1] || !split[2])
 		return (ERROR);

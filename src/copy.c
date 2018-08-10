@@ -19,17 +19,24 @@ int			copy_map(t_game *g, int x, int y)
 	int		j;
 
 	i = 0;
-	if (!(g->map = (char **)malloc(sizeof(char*) * (y + 1))))
+	if (!(g->map = (char **)malloc(sizeof(char*) * (y + 2))))
 		return (0);
 	tab = NULL;
 	while (i < y)
 	{
 		// tab = NULL;
 		j = -1;
-		ft_memdel((void**)tab);
-		get_next_line(0, &tab);
-		if (!(g->map[i] = (char*)malloc(sizeof(char) * (x + 1))))
+		ft_memdel((void**)&tab);
+		if (get_next_line(0, &tab) == -1)
+		{
+			ft_memdel((void **)&(g->map));
 			return (0);
+		}
+		if (!(g->map[i] = (char*)malloc(sizeof(char) * (x + 1))))
+		{
+			ft_memdel((void **)&(g->map));
+			return (0);
+		}
 		while (++j < x)
 			g->map[i][j] = tab[j + 4];
 		g->map[i][j] = '\0';
